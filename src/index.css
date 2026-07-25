@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #eff6ff;
+  --color-accent: #f97316;
+  --color-accent-dark: #ea580c;
+  --color-ink: #0f172a;
+  --color-muted: #64748b;
+
+  --font-sans: "Inter", "Manrope", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white font-sans text-ink antialiased;
+}
+
+/* Hero banner animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translateY(-14px) rotate(var(--float-rotate, 0deg));
+  }
+}
+
+@keyframes fly {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes pop {
+  0%,
+  70%,
+  100% {
+    transform: scale(1) rotate(var(--float-rotate, 0deg));
+  }
+  80% {
+    transform: scale(1.06) rotate(var(--float-rotate, 0deg));
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.animate-pop {
+  animation: pop 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-slow,
+  .animate-pop {
+    animation: none;
+  }
+}
