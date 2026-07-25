@@ -28,28 +28,23 @@ function XIcon() {
 
 const columns = [
   {
-    title: 'Послуги',
+    title: 'Services',
+    links: ['Visas', 'Passports', 'Travel Declarations', 'Document Photos'],
+  },
+  {
+    title: 'Popular Destinations',
     links: [
-      'Візи',
-      'Паспорти',
-      'Туристичні декларації',
-      'Фото на документи',
+      'US Visa',
+      'Schengen Visa',
+      'UAE Visa',
+      'India Visa',
+      'UK ETA',
+      'Canada eTA',
     ],
   },
   {
-    title: 'Популярні напрямки',
-    links: [
-      'Віза в США',
-      'Шенгенська віза',
-      'Віза в ОАЕ',
-      'Віза в Індію',
-      'ETA Великобританія',
-      'eTA Канада',
-    ],
-  },
-  {
-    title: 'Компанія',
-    links: ['Про нас', 'Блог', 'Контакти', 'Партнерська програма'],
+    title: 'Company',
+    links: ['About us', 'Blog', 'Contacts', 'Affiliate Program'],
   },
 ]
 
@@ -67,14 +62,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center gap-2">
-              
               <span className="text-xl font-extrabold tracking-tight text-white">
                 Visa
               </span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              Ваш надійний помічник у подорожах. Візи, паспорти та туристичні
-              декларації — швидко, безпечно та 100% онлайн.
+              Your trusted travel companion. Visas, passports and travel
+              declarations — fast, secure and 100% online.
             </p>
             <div className="mt-5 flex gap-3">
               {socials.map((s) => (
@@ -115,12 +109,12 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col gap-5 border-t border-slate-800 pt-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:items-center sm:gap-5">
-            <span>© 2026 Visa. Усі права захищено.</span>
+            <span>© 2026 Visa. All rights reserved.</span>
             <a href="#" className="hover:text-white">
-              Політика конфіденційності
+              Privacy Policy
             </a>
             <a href="#" className="hover:text-white">
-              Умови використання
+              Terms of Service
             </a>
           </div>
 
@@ -136,7 +130,7 @@ export default function Footer() {
             ))}
             <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-900/60 px-3 py-1.5 text-xs font-bold text-emerald-300">
               <Lock className="size-3.5" />
-              Безпечна оплата
+              Secure payment
             </span>
           </div>
         </div>

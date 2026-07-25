@@ -3,24 +3,24 @@ import { ChevronDown, MessageCircle } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'Що таке електронна віза (e-Visa)?',
-    a: "Це офіційний дозвіл на в'їзд, який оформлюється повністю онлайн і надсилається на email. Роздруківка або файл у телефоні — усе, що потрібно на кордоні.",
+    q: 'What is an electronic visa (e-Visa)?',
+    a: 'It is an official entry permit issued entirely online and delivered to your email. A printout or the file on your phone is all you need at the border.',
   },
   {
-    q: 'Як швидко я отримаю документ?',
-    a: 'Термін залежить від країни та типу документа. Точний строк для вашого напрямку ви побачите одразу після перевірки вимог.',
+    q: 'How fast will I receive my document?',
+    a: 'It depends on the country and document type. You will see the exact timeline for your destination right after checking the requirements.',
   },
   {
-    q: 'Чи безпечно вводити дані паспорта?',
-    a: 'Так. Ми використовуємо сучасні стандарти захисту даних і ніколи не передаємо вашу інформацію третім сторонам.',
+    q: 'Is it safe to enter my passport details?',
+    a: 'Yes. We follow modern data protection standards and never share your information with third parties.',
   },
   {
-    q: 'Що буде, якщо мою заявку відхилять?',
-    a: 'Якщо відмова сталася з нашої вини — повернемо вартість послуг на 100%. Наші експерти зроблять усе, щоб цього не сталося.',
+    q: 'What happens if my application is rejected?',
+    a: 'If the refusal is our fault, we refund our service fee in full. Our experts do everything to make sure that never happens.',
   },
   {
-    q: 'Чи можу я оформити візу для всієї родини?',
-    a: 'Так, в одній заявці можна додати кількох подорожніх — це швидше й зручніше.',
+    q: 'Can I apply for my whole family?',
+    a: 'Yes, you can add several travelers to a single application — it is faster and more convenient.',
   },
 ]
 
@@ -31,7 +31,7 @@ export default function Faq() {
     <section id="faq" className="bg-white py-16 lg:py-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-center text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-          Поширені запитання
+          Frequently Asked Questions
         </h2>
 
         <div className="mt-10 divide-y divide-slate-100 rounded-2xl bg-white shadow-sm ring-1 ring-slate-900/5">
@@ -66,9 +66,12 @@ export default function Faq() {
 
         <p className="mt-8 flex items-center justify-center gap-2 text-sm text-muted">
           <MessageCircle className="size-4 text-primary" />
-          Не знайшли відповідь?{' '}
-          <a href="#contacts" className="font-semibold text-primary hover:underline">
-            Напишіть нам у чат 24/7
+          Didn&apos;t find your answer?{' '}
+          <a
+            href="#contacts"
+            className="font-semibold text-primary hover:underline"
+          >
+            Message us in chat 24/7
           </a>
         </p>
       </div>

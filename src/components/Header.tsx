@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { ChevronDown, CircleUser, Menu, X } from 'lucide-react'
+import { useAuth } from '../auth/AuthContext'
 
 const navItems = [
-  { label: 'Послуги', href: '#services', hasDropdown: true },
-  { label: 'Вимоги за країнами', href: '#destinations' },
-  { label: 'Блог', href: '#blog' },
-  { label: 'Контакти', href: '#contacts' },
+  { label: 'Services', href: '/#services', hasDropdown: true },
+  { label: 'Requirements by Country', href: '/#destinations' },
+  { label: 'Blog', href: '/#blog' },
+  { label: 'Contacts', href: '/#contacts' },
 ]
 
 export default function Header() {
+  const { user } = useAuth()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -26,11 +29,11 @@ export default function Header() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2">
           <span className="text-xl font-extrabold tracking-tight text-ink">
             Visa
           </span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 lg:flex">
@@ -52,32 +55,44 @@ export default function Header() {
             type="button"
             className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-primary-light hover:text-primary"
           >
-            UA <ChevronDown className="size-3.5" />
+            EN <ChevronDown className="size-3.5" />
           </button>
           <button
             type="button"
             className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-primary-light hover:text-primary"
           >
-            UAH <ChevronDown className="size-3.5" />
+            USD <ChevronDown className="size-3.5" />
           </button>
-          <a
-            href="#login"
-            className="px-2 text-sm font-semibold text-slate-700 transition-colors hover:text-primary"
-          >
-            Увійти
-          </a>
-          <a
-            href="#account"
-            className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
-          >
-            Мій акаунт
-          </a>
+          {user ? (
+            <Link
+              to="/account"
+              className="flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+            >
+              <CircleUser className="size-4" />
+              {user.fullName.split(' ')[0]}
+            </Link>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="px-2 text-sm font-semibold text-slate-700 transition-colors hover:text-primary"
+              >
+                Sign in
+              </Link>
+              <Link
+                to="/login"
+                className="rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-primary-dark"
+              >
+                My Account
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile burger */}
         <button
           type="button"
-          aria-label={menuOpen ? 'Закрити меню' : 'Відкрити меню'}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen((v) => !v)}
           className="grid size-10 place-items-center rounded-lg text-slate-700 hover:bg-primary-light lg:hidden"
         >
@@ -106,28 +121,43 @@ export default function Header() {
               type="button"
               className="flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600"
             >
-              UA <ChevronDown className="size-3.5" />
+              EN <ChevronDown className="size-3.5" />
             </button>
             <button
               type="button"
               className="flex items-center gap-1 rounded-lg border border-slate-200 px-3 py-2 text-sm font-medium text-slate-600"
             >
-              UAH <ChevronDown className="size-3.5" />
+              USD <ChevronDown className="size-3.5" />
             </button>
           </div>
           <div className="mt-4 flex gap-3">
-            <a
-              href="#login"
-              className="flex-1 rounded-xl border border-primary px-4 py-2.5 text-center text-sm font-semibold text-primary"
-            >
-              Увійти
-            </a>
-            <a
-              href="#account"
-              className="flex-1 rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white"
-            >
-              Мій акаунт
-            </a>
+            {user ? (
+              <Link
+                to="/account"
+                onClick={() => setMenuOpen(false)}
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white"
+              >
+                <CircleUser className="size-4" />
+                My Account
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex-1 rounded-xl border border-primary px-4 py-2.5 text-center text-sm font-semibold text-primary"
+                >
+                  Sign in
+                </Link>
+                <Link
+                  to="/login"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex-1 rounded-xl bg-primary px-4 py-2.5 text-center text-sm font-semibold text-white"
+                >
+                  My Account
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}

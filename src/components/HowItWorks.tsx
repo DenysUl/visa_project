@@ -3,18 +3,18 @@ import { CreditCard, FileText, MailCheck } from 'lucide-react'
 const steps = [
   {
     icon: FileText,
-    title: 'Заповніть онлайн-форму',
-    text: 'Прості запитання зрозумілою мовою. Збережіть чернетку та поверніться будь-коли.',
+    title: 'Fill out a simple online form',
+    text: 'Plain questions in plain language. Save a draft and come back anytime.',
   },
   {
     icon: CreditCard,
-    title: 'Здійсніть безпечну оплату',
-    text: 'Visa, Mastercard, Apple Pay або PayPal. Гарантія повернення коштів, якщо заявку відхилять з нашої вини.',
+    title: 'Make a secure payment',
+    text: 'Visa, Mastercard, Apple Pay or PayPal. Money-back guarantee if your application is rejected due to our fault.',
   },
   {
     icon: MailCheck,
-    title: 'Отримайте документ на email',
-    text: 'Наші експерти перевірять заявку та надішлють готовий документ. Просто роздрукуйте або покажіть із телефона.',
+    title: 'Receive your document by email',
+    text: 'Our experts review your application and send you the ready document. Just print it or show it on your phone.',
   },
 ]
 
@@ -24,10 +24,11 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Оформлення за 3 простих кроки
+            Get your document in 3 simple steps
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">
-            Жодної бюрократії. Заповнення заявки займає лічені хвилини.
+            No bureaucracy. Filling out the application takes just a few
+            minutes.
           </p>
         </div>
 
@@ -60,7 +61,7 @@ export default function HowItWorks() {
             href="#top"
             className="inline-flex items-center justify-center rounded-xl bg-accent px-8 py-3.5 text-base font-bold text-white transition-colors hover:bg-accent-dark"
           >
-            Почати оформлення
+            Start my application
           </a>
         </div>
       </div>

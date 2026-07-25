@@ -1,26 +1,28 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { AuthProvider } from './auth/AuthContext'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import HowItWorks from './components/HowItWorks'
-import WhyChooseUs from './components/WhyChooseUs'
-import PopularDestinations from './components/PopularDestinations'
-import Testimonials from './components/Testimonials'
-import Faq from './components/Faq'
 import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import DestinationPage from './pages/DestinationPage'
+import LoginPage from './pages/LoginPage'
+import AccountPage from './pages/AccountPage'
 
 function App() {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <HowItWorks />
-        <WhyChooseUs />
-        <PopularDestinations />
-        <Testimonials />
-        <Faq />
-      </main>
-      <Footer />
-    </>
+    <BrowserRouter>
+      <AuthProvider>
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/destinations/:code" element={<DestinationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/account" element={<AccountPage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </AuthProvider>
+    </BrowserRouter>
   )
 }
 

@@ -11,10 +11,10 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Олена К.',
-    trip: 'віза до ОАЕ',
-    text: 'Оформила візу за один вечір, документ прийшов швидше, ніж очікувала. Підтримка відповіла пізно ввечері — вражена!',
-    initials: 'ОК',
+    name: 'Olena K.',
+    trip: 'UAE e-Visa',
+    text: 'Applied in one evening and the document arrived sooner than I expected. Support answered late at night — impressed!',
+    initials: 'OK',
     color: 'bg-rose-500',
   },
   {
@@ -25,17 +25,17 @@ const testimonials: Testimonial[] = [
     color: 'bg-emerald-500',
   },
   {
-    name: 'Марія та Ігор',
-    trip: 'Шенген',
-    text: 'Експерт знайшов помилку в даті паспорта до подачі — врятували відпустку. Дякуємо!',
-    initials: 'МІ',
+    name: 'Maria & Ihor',
+    trip: 'Schengen Visa',
+    text: 'An expert spotted a mistake in the passport date before submission — they saved our vacation. Thank you!',
+    initials: 'MI',
     color: 'bg-violet-500',
   },
   {
-    name: 'Дмитро С.',
-    trip: 'e-Visa до Туреччини',
-    text: 'Віза прийшла швидше, ніж я встиг зібрати валізу. Рекомендую всім друзям.',
-    initials: 'ДС',
+    name: 'Dmytro S.',
+    trip: 'Turkey e-Visa',
+    text: 'The visa arrived before I finished packing my suitcase. Recommending it to all my friends.',
+    initials: 'DS',
     color: 'bg-sky-500',
   },
   {
@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
 
 function Stars() {
   return (
-    <span className="flex items-center gap-0.5" aria-label="5 з 5 зірок">
+    <span className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
         <Star key={i} className="size-4 fill-emerald-500 text-emerald-500" />
       ))}
@@ -72,14 +72,25 @@ export default function Testimonials() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Нам довіряють мандрівники з усього світу
+            Trusted by travelers around the world
           </h2>
+          <div className="mt-4 flex items-center gap-2">
+            <Stars />
+            <span className="text-sm font-semibold text-ink">
+              Trustpilot 4.9/5
+            </span>
+            <span className="text-sm text-muted">· 38,000+ reviews</span>
+          </div>
         </div>
 
         {/* Mobile: horizontal scroll-snap; Desktop: paged grid */}
         <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 lg:hidden">
           {testimonials.map((t) => (
-            <TestimonialCard key={t.name} t={t} className="w-80 shrink-0 snap-center" />
+            <TestimonialCard
+              key={t.name}
+              t={t}
+              className="w-80 shrink-0 snap-center"
+            />
           ))}
         </div>
 
@@ -94,7 +105,7 @@ export default function Testimonials() {
               <button
                 type="button"
                 onClick={prev}
-                aria-label="Попередні відгуки"
+                aria-label="Previous reviews"
                 className="grid size-11 place-items-center rounded-full bg-white text-ink shadow-sm ring-1 ring-slate-900/10 transition-colors hover:bg-primary hover:text-white"
               >
                 <ChevronLeft className="size-5" />
@@ -105,7 +116,7 @@ export default function Testimonials() {
               <button
                 type="button"
                 onClick={next}
-                aria-label="Наступні відгуки"
+                aria-label="Next reviews"
                 className="grid size-11 place-items-center rounded-full bg-white text-ink shadow-sm ring-1 ring-slate-900/10 transition-colors hover:bg-primary hover:text-white"
               >
                 <ChevronRight className="size-5" />

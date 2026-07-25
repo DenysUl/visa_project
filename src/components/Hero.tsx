@@ -23,10 +23,8 @@ export default function Hero() {
 
   const handleCheck = () => {
     if (!citizenship || !destination) return
-    // Заглушка: тут буде перехід на сторінку вимог
-    alert(
-      `Перевіряємо вимоги: ${citizenship.name} → ${destination.name}`,
-    )
+    // Placeholder: this will navigate to the requirements page
+    alert(`Checking requirements: ${citizenship.name} → ${destination.name}`)
   }
 
   return (
@@ -48,33 +46,34 @@ export default function Hero() {
             {/* Badge */}
             <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary sm:text-sm">
               <BadgeCheck className="size-4" />
-              Нам довіряють мандрівники з усього світу
+              Trusted by travelers worldwide
             </span>
 
             {/* H1 */}
             <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl xl:text-6xl">
-              Отримайте візу в{' '}
-              <span className="text-primary">190+ країн</span> в один клік
+              Get your visa to{' '}
+              <span className="text-primary">190+ countries</span> in one
+              click
             </h1>
 
             {/* Subtitle */}
             <p className="mx-auto mt-4 max-w-2xl text-base text-muted sm:text-lg lg:mx-0">
-              Швидко, безпечно та 100% онлайн. Без черг у консульствах і
-              паперової тяганини — ми все зробимо за вас.
+              Fast, secure and 100% online. No embassy queues, no paperwork —
+              we handle everything for you.
             </p>
 
             {/* Search widget */}
             <div className="mt-8 rounded-2xl bg-white p-4 shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/5 sm:p-5">
               <div className="flex flex-col gap-3">
                 <CountrySelect
-                  label="Я громадянин"
-                  placeholder="Оберіть країну громадянства"
+                  label="I am a citizen of"
+                  placeholder="Select your citizenship"
                   value={citizenship}
                   onChange={setCitizenship}
                 />
                 <CountrySelect
-                  label="Я подорожую до"
-                  placeholder="Оберіть країну призначення"
+                  label="I am traveling to"
+                  placeholder="Select your destination"
                   value={destination}
                   onChange={setDestination}
                 />
@@ -83,18 +82,18 @@ export default function Hero() {
                   onClick={handleCheck}
                   className="flex h-13 w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 text-base font-bold text-white transition-colors hover:bg-accent-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent/50"
                 >
-                  Перевірити вимоги
+                  Check Requirements
                   <ArrowRight className="size-5" />
                 </button>
               </div>
               <div className="mt-3 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-xs text-muted sm:text-sm">
                 <span className="inline-flex items-center gap-1.5">
                   <ShieldCheck className="size-4 text-primary" />
-                  Безкоштовна перевірка
+                  Free check
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <Clock className="size-4 text-primary" />
-                  Миттєвий результат
+                  Instant result
                 </span>
               </div>
             </div>
@@ -131,15 +130,17 @@ export default function Hero() {
               />
             </svg>
             <span
-              className="absolute"
+              className="animate-fly-return absolute"
               style={{
                 offsetPath: "path('M 30 360 C 120 260, 280 240, 370 90')",
                 offsetRotate: 'auto 45deg',
-                animation: 'fly 9s linear infinite',
               }}
             >
-              <span className="grid size-10 place-items-center rounded-full bg-white shadow-lg">
-                <Plane className="size-5 -rotate-45 text-primary" />
+              <span className="animate-plane-turn block">
+                <Plane
+                  className="size-8 text-white drop-shadow-lg"
+                  strokeWidth={1.25}
+                />
               </span>
             </span>
 
@@ -150,7 +151,7 @@ export default function Hero() {
             >
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-amber-300">
-                  Паспорт
+                  Passport
                 </span>
                 <Globe className="size-4 text-amber-300" />
               </div>
@@ -173,9 +174,9 @@ export default function Hero() {
                   <CheckCircle2 className="size-5 text-emerald-600" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-ink">Візу схвалено!</p>
+                  <p className="text-sm font-bold text-ink">Visa approved!</p>
                   <p className="text-xs text-muted">
-                    Документ надіслано на email
+                    Document sent to your email
                   </p>
                 </div>
               </div>

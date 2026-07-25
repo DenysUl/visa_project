@@ -3,23 +3,23 @@ import { Headset, Lock, ShieldCheck, UserCheck } from 'lucide-react'
 const benefits = [
   {
     icon: Headset,
-    title: 'Підтримка 24/7',
-    text: 'Живі люди, а не боти. Чат, email і телефон — українською та англійською.',
+    title: '24/7 support',
+    text: 'Real people, not bots. Chat, email and phone — whenever you need us.',
   },
   {
     icon: ShieldCheck,
-    title: '99% успішних заявок',
-    text: 'Експерти перевіряють кожну анкету перед подачею, тож відмови — рідкість.',
+    title: '99% approval rate',
+    text: 'Experts review every application before submission, so refusals are rare.',
   },
   {
     icon: UserCheck,
-    title: 'Перевірка експертами',
-    text: 'Візові спеціалісти з досвідом 10+ років виправлять помилки до відправки в консульство.',
+    title: 'Expert review',
+    text: 'Visa specialists with years of experience fix any mistakes before your application reaches the consulate.',
   },
   {
     icon: Lock,
-    title: 'Надійний захист даних',
-    text: 'Ваші паспортні дані надійно захищені та використовуються лише для оформлення вашої заявки.',
+    title: 'Reliable data protection',
+    text: 'Your passport data is securely protected and used only to process your application.',
   },
 ]
 
@@ -29,10 +29,10 @@ export default function WhyChooseUs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Чому мандрівники обирають Visa
+            Why travelers choose Visa
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">
-            Ми беремо бюрократію на себе, щоб ви думали лише про подорож.
+            We take care of the bureaucracy so you can focus on the journey.
           </p>
         </div>
 

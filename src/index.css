@@ -41,6 +41,37 @@ body {
   }
 }
 
+/* Fly to the end of the path, pause, fly back, pause at home */
+@keyframes fly-return {
+  0%,
+  6% {
+    offset-distance: 0%;
+  }
+  46%,
+  54% {
+    offset-distance: 100%;
+  }
+  100% {
+    offset-distance: 0%;
+  }
+}
+
+/* Nose direction: mirrored on the return leg so the plane banks
+   into the turn instead of flipping belly-up */
+@keyframes plane-turn {
+  0% {
+    transform: rotate(90deg) scaleY(-1);
+  }
+  6%,
+  46% {
+    transform: rotate(0deg);
+  }
+  54%,
+  100% {
+    transform: rotate(90deg) scaleY(-1);
+  }
+}
+
 @keyframes pop {
   0%,
   70%,
@@ -65,10 +96,20 @@ body {
   animation: pop 5s ease-in-out infinite;
 }
 
+.animate-fly-return {
+  animation: fly-return 16s ease-in-out infinite;
+}
+
+.animate-plane-turn {
+  animation: plane-turn 16s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-float-slow,
-  .animate-pop {
+  .animate-pop,
+  .animate-fly-return,
+  .animate-plane-turn {
     animation: none;
   }
 }

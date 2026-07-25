@@ -78,14 +78,14 @@ export default function CountrySelect({
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Пошук країни…"
+              placeholder="Search country…"
               className="w-full bg-transparent py-1 text-sm text-ink outline-none placeholder:text-muted"
             />
           </div>
           <ul role="listbox" className="max-h-64 overflow-y-auto py-1">
             {filtered.length === 0 && (
               <li className="px-4 py-3 text-sm text-muted">
-                Нічого не знайдено
+                No results found
               </li>
             )}
             {filtered.map((country) => (
