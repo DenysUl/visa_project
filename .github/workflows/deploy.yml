@@ -24,22 +24,26 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
         run: npm ci
+        working-directory: frontend
 
       - name: Build
         run: npm run build
+        working-directory: frontend
 
       # SPA fallback so /destinations/us etc. work on page reload
       - name: Add 404.html fallback
         run: cp dist/index.html dist/404.html
+        working-directory: frontend
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: frontend/dist
 
   deploy:
     needs: build

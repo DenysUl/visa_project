@@ -4,23 +4,24 @@ A landing page and API for an online visa, passport and travel declaration servi
 
 ## Stack
 
-**Frontend** (root)
+**Frontend** (`frontend/`)
 
 - React 19 + TypeScript, React Router
 - Vite 6
 - Tailwind CSS 4 (custom theme in `src/index.css`)
 - Lucide React (icons), flag-icons (SVG country flags)
 
-**Backend** (`server/`)
+**Backend** (`backend/`)
 
 - Express 4 + TypeScript (run with tsx)
-- Prisma ORM + SQLite (`server/prisma/dev.db`)
+- Prisma ORM + SQLite (`backend/prisma/dev.db`)
 
 ## Getting started
 
 Frontend:
 
 ```bash
+cd frontend
 npm install
 npm run dev          # http://localhost:5173
 ```
@@ -28,14 +29,14 @@ npm run dev          # http://localhost:5173
 Backend (in a separate terminal):
 
 ```bash
-cd server
+cd backend
 npm install
 npx prisma migrate dev   # create/update the database
 npm run db:seed          # seed destinations
 npm run dev              # http://localhost:3001
 ```
 
-Vite proxies `/api/*` requests to the backend (see `vite.config.ts`), so the frontend talks to the API without CORS setup.
+Vite proxies `/api/*` requests to the backend (see `frontend/vite.config.ts`), so the frontend talks to the API without CORS setup.
 
 ## API
 
@@ -56,12 +57,12 @@ Auth uses a JWT stored in an httpOnly cookie (`bcryptjs` password hashing). Set 
 
 ## Structure
 
-- `src/pages/HomePage.tsx` — landing page (hero, how it works, benefits, destinations, testimonials, FAQ)
-- `src/pages/DestinationPage.tsx` — country page (`/destinations/:code`) with details and an application form
-- `src/components/ApplicationForm.tsx` — form that POSTs to `/api/applications`
-- `src/data/destinations.ts` — destination content shared with the seed script
-- `server/prisma/schema.prisma` — `Destination` and `Application` models
-- `server/src/routes/` — API route handlers
+- `frontend/src/pages/HomePage.tsx` — landing page (hero, how it works, benefits, destinations, testimonials, FAQ)
+- `frontend/src/pages/DestinationPage.tsx` — country page (`/destinations/:code`) with details and an application form
+- `frontend/src/components/ApplicationForm.tsx` — form that POSTs to `/api/applications`
+- `frontend/src/data/destinations.ts` — destination content shared with the seed script
+- `backend/prisma/schema.prisma` — `Destination` and `Application` models
+- `backend/src/routes/` — API route handlers
 
 ## Design tokens (Tailwind `@theme`)
 

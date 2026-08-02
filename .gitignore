@@ -13,8 +13,8 @@ dist-ssr
 *.local
 
 # Database
-server/prisma/dev.db
-server/prisma/dev.db-journal
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
 
 # Editor directories and files
 .vscode/*
