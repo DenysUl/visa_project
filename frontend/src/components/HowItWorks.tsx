@@ -3,18 +3,18 @@ import { CreditCard, FileText, MailCheck } from 'lucide-react'
 const steps = [
   {
     icon: FileText,
-    title: 'Fill out a simple online form',
-    text: 'Plain questions in plain language. Save a draft and come back anytime.',
+    title: 'Fill out an online form',
+    text: 'Complete a short online form and upload the required documents securely. Save a draft and come back anytime',
   },
   {
     icon: CreditCard,
     title: 'Make a secure payment',
-    text: 'Visa, Mastercard, Apple Pay or PayPal. Money-back guarantee if your application is rejected due to our fault.',
+    text: 'Choose your preferred payment method: Visa, Mastercard, Apple Pay, or PayPal.',
   },
   {
     icon: MailCheck,
-    title: 'Receive your document by email',
-    text: 'Our experts review your application and send you the ready document. Just print it or show it on your phone.',
+    title: 'Receive your eVisa by email',
+    text: 'Our team reviews your application and sends you the ready eVisa — just print it and show it when you travel.',
   },
 ]
 
@@ -24,11 +24,10 @@ export default function HowItWorks() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Get your document in 3 simple steps
+            Get your eVisa in 3 simple steps
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">
-            No bureaucracy. Filling out the application takes just a few
-            minutes.
+          Apply from anywhere, anytime
           </p>
         </div>
 

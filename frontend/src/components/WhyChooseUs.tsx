@@ -2,25 +2,26 @@ import { Headset, Lock, ShieldCheck, UserCheck } from 'lucide-react'
 
 const benefits = [
   {
-    icon: Headset,
-    title: '24/7 support',
-    text: 'Real people, not bots. Chat, email and phone — whenever you need us.',
+    icon: UserCheck,
+    title: 'Expert review',
+    text: 'Dedicated visa specialists handle your case, ensuring your application is submitted with care and accuracy.',
   },
   {
     icon: ShieldCheck,
     title: '99% approval rate',
-    text: 'Experts review every application before submission, so refusals are rare.',
+    text: 'Always up to date — country-specific checklists that make sure nothing gets missed.',
   },
   {
-    icon: UserCheck,
-    title: 'Expert review',
-    text: 'Visa specialists with years of experience fix any mistakes before your application reaches the consulate.',
+    icon: Headset,
+    title: '24/7 support',
+    text: 'Real people, not bots. Chat, email and phone - whenever you need us.',
   },
   {
     icon: Lock,
     title: 'Reliable data protection',
-    text: 'Your passport data is securely protected and used only to process your application.',
+    text: 'Your passport data is securely stored and used only to process your application.',
   },
+ 
 ]
 
 export default function WhyChooseUs() {
@@ -29,10 +30,10 @@ export default function WhyChooseUs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
-            Why travelers choose Visa
+            Why travelers trust us
           </h2>
           <p className="mt-3 text-base text-muted sm:text-lg">
-            We take care of the bureaucracy so you can focus on the journey.
+          We handle the paperwork, so you can focus on the journey.
           </p>
         </div>
 

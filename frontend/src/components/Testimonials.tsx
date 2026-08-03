@@ -12,38 +12,38 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: 'Olena K.',
-    trip: 'UAE e-Visa',
+    trip: 'UAE eVisa',
     text: 'Applied in one evening and the document arrived sooner than I expected. Support answered late at night — impressed!',
     initials: 'OK',
-    color: 'bg-rose-500',
+    color: 'bg-teal-600',
   },
   {
     name: 'Andrew M.',
-    trip: 'India e-Visa',
-    text: 'The form was quick and simple. Visa arrived faster than promised. Flawless.',
+    trip: 'India eVisa',
+    text: 'The form was quick and simple. eVisa arrived faster than promised. Flawless.',
     initials: 'AM',
-    color: 'bg-emerald-500',
+    color: 'bg-cyan-600',
   },
   {
     name: 'Maria & Ihor',
-    trip: 'Schengen Visa',
+    trip: 'Schengen eVisa',
     text: 'An expert spotted a mistake in the passport date before submission — they saved our vacation. Thank you!',
     initials: 'MI',
-    color: 'bg-violet-500',
+    color: 'bg-teal-700',
   },
   {
     name: 'Dmytro S.',
-    trip: 'Turkey e-Visa',
+    trip: 'Turkey eVisa',
     text: 'The visa arrived before I finished packing my suitcase. Recommending it to all my friends.',
     initials: 'DS',
-    color: 'bg-sky-500',
+    color: 'bg-cyan-700',
   },
   {
     name: 'Sofia R.',
     trip: 'UK ETA',
     text: 'Clear instructions, fair price, zero stress. My ETA was approved in no time.',
     initials: 'SR',
-    color: 'bg-amber-500',
+    color: 'bg-teal-500',
   },
 ]
 
@@ -51,7 +51,7 @@ function Stars() {
   return (
     <span className="flex items-center gap-0.5" aria-label="5 out of 5 stars">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className="size-4 fill-emerald-500 text-emerald-500" />
+        <Star key={i} className="size-4 fill-teal-500 text-teal-500" />
       ))}
     </span>
   )
@@ -74,13 +74,6 @@ export default function Testimonials() {
           <h2 className="text-3xl font-extrabold tracking-tight text-ink sm:text-4xl">
             Trusted by travelers around the world
           </h2>
-          <div className="mt-4 flex items-center gap-2">
-            <Stars />
-            <span className="text-sm font-semibold text-ink">
-              Trustpilot 4.9/5
-            </span>
-            <span className="text-sm text-muted">· 38,000+ reviews</span>
-          </div>
         </div>
 
         {/* Mobile: horizontal scroll-snap; Desktop: paged grid */}

@@ -1,4 +1,4 @@
-import { Lock } from 'lucide-react'
+import { Lock, MessageCircle, PhoneCall } from 'lucide-react'
 
 function FacebookIcon() {
   return (
@@ -27,17 +27,14 @@ function XIcon() {
 }
 
 const columns = [
-  {
-    title: 'Services',
-    links: ['Visas', 'Passports', 'Travel Declarations', 'Document Photos'],
-  },
+
   {
     title: 'Popular Destinations',
     links: [
-      'US Visa',
-      'Schengen Visa',
-      'UAE Visa',
-      'India Visa',
+      'US eVisa',
+      'Schengen eVisa',
+      'UAE eVisa',
+      'India eVisa',
       'UK ETA',
       'Canada eTA',
     ],
@@ -56,19 +53,22 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer id="contacts" className="bg-slate-900 text-slate-300">
+    <>
+      <footer
+        id="contacts"
+        className="border-t border-teal-100 bg-teal-50/40 text-slate-700"
+      >
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid items-start gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center gap-2">
-              <span className="text-xl font-extrabold tracking-tight text-white">
-                Visa
+              <span className="text-xl font-extrabold tracking-tight text-ink">
+                Company Name
               </span>
             </a>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">
-              Your trusted travel companion. Visas, passports and travel
-              declarations — fast, secure and 100% online.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+            Your trusted travel companion. Fast, secure and 100% online.
             </p>
             <div className="mt-5 flex gap-3">
               {socials.map((s) => (
@@ -76,7 +76,7 @@ export default function Footer() {
                   key={s.label}
                   href="#"
                   aria-label={s.label}
-                  className="grid size-10 place-items-center rounded-lg bg-slate-800 text-slate-300 transition-colors hover:bg-primary hover:text-white"
+                  className="grid size-10 place-items-center rounded-lg bg-primary-light text-primary transition-colors hover:bg-primary hover:text-white"
                 >
                   <s.icon />
                 </a>
@@ -87,7 +87,7 @@ export default function Footer() {
           {/* Link columns */}
           {columns.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <h3 className="text-sm font-bold uppercase tracking-wider text-white">
+              <h3 className="text-sm font-bold uppercase tracking-wider text-ink">
                 {col.title}
               </h3>
               <ul className="mt-4 space-y-2.5">
@@ -95,7 +95,7 @@ export default function Footer() {
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-sm text-slate-400 transition-colors hover:text-white"
+                      className="text-sm text-muted transition-colors hover:text-primary"
                     >
                       {link}
                     </a>
@@ -107,13 +107,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col gap-5 border-t border-slate-800 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-2 text-sm text-slate-400 sm:flex-row sm:items-center sm:gap-5">
-            <span>© 2026 Visa. All rights reserved.</span>
-            <a href="#" className="hover:text-white">
+        <div className="mt-12 flex flex-col gap-5 border-t border-slate-200 pt-8 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-2 text-sm text-muted sm:flex-row sm:items-center sm:gap-5">
+            <span>© 2026 Company Name. All rights reserved.</span>
+            <a href="#" className="hover:text-primary">
               Privacy Policy
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="#" className="hover:text-primary">
               Terms of Service
             </a>
           </div>
@@ -123,18 +123,36 @@ export default function Footer() {
             {['Visa', 'Mastercard', 'PayPal', 'Apple Pay'].map((pay) => (
               <span
                 key={pay}
-                className="rounded-md bg-slate-800 px-3 py-1.5 text-xs font-bold text-slate-200"
+                className="rounded-md bg-primary-light px-3 py-1.5 text-xs font-bold text-primary"
               >
                 {pay}
               </span>
             ))}
-            <span className="inline-flex items-center gap-1.5 rounded-md bg-emerald-900/60 px-3 py-1.5 text-xs font-bold text-emerald-300">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-teal-50 px-3 py-1.5 text-xs font-bold text-teal-700">
               <Lock className="size-3.5" />
               Secure payment
             </span>
           </div>
         </div>
       </div>
-    </footer>
+      </footer>
+
+      <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
+        <a
+          href="#"
+          aria-label="Open chat"
+          className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white shadow-lg shadow-primary/30 transition-colors hover:bg-primary/90"
+        >
+          <MessageCircle className="size-5" />
+        </a>
+        <a
+          href="tel:+380000000000"
+          aria-label="Call us"
+          className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-teal-700 text-white shadow-lg shadow-teal-700/30 transition-colors hover:bg-teal-600"
+        >
+          <PhoneCall className="size-5" />
+        </a>
+      </div>
+    </>
   )
 }

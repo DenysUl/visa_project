@@ -3,7 +3,7 @@ import { ChevronDown, MessageCircle } from 'lucide-react'
 
 const faqs = [
   {
-    q: 'What is an electronic visa (e-Visa)?',
+    q: 'What is an electronic visa (eVisa)?',
     a: 'It is an official entry permit issued entirely online and delivered to your email. A printout or the file on your phone is all you need at the border.',
   },
   {

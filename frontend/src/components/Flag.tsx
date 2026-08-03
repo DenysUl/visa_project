@@ -3,10 +3,7 @@ interface FlagProps {
   className?: string
 }
 
-/**
- * SVG-прапор із пакета flag-icons. Ширина масштабується від font-size,
- * тому розмір задається текстовими класами (text-lg, text-3xl тощо).
- */
+
 export default function Flag({ code, className = '' }: FlagProps) {
   return (
     <span

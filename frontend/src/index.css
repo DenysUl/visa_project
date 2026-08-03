@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1d4ed8;
-  --color-primary-dark: #1e40af;
-  --color-primary-light: #eff6ff;
-  --color-accent: #f97316;
-  --color-accent-dark: #ea580c;
+  --color-primary: #0f766e;
+  --color-primary-dark: #115e59;
+  --color-primary-light: #f0fdfa;
+  --color-accent: #0d9488;
+  --color-accent-dark: #0f766e;
   --color-ink: #0f172a;
   --color-muted: #64748b;
 
@@ -19,6 +19,19 @@ html {
 
 body {
   @apply bg-white font-sans text-ink antialiased;
+}
+
+button,
+a,
+select,
+summary,
+[role='button'] {
+  cursor: pointer;
+}
+
+button:disabled,
+select:disabled {
+  cursor: not-allowed;
 }
 
 /* Hero banner animations */

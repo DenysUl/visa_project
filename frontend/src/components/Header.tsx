@@ -4,7 +4,6 @@ import { ChevronDown, CircleUser, Menu, X } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 
 const navItems = [
-  { label: 'Services', href: '/#services', hasDropdown: true },
   { label: 'Requirements by Country', href: '/#destinations' },
   { label: 'Blog', href: '/#blog' },
   { label: 'Contacts', href: '/#contacts' },
@@ -31,7 +30,7 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <span className="text-xl font-extrabold tracking-tight text-ink">
-            Visa
+            Company Name
           </span>
         </Link>
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft,
   CheckCircle2,
@@ -9,11 +9,24 @@ import {
 } from 'lucide-react'
 import Flag from '../components/Flag'
 import ApplicationForm from '../components/ApplicationForm'
+import { countries } from '../data/countries'
 import { getDestination } from '../data/destinations'
+import { resolveVisaPolicy } from '../data/visaPolicies'
 
 export default function DestinationPage() {
-  const { code } = useParams<{ code: string }>()
+  const { code, citizenshipCode: citizenshipCodeFromPath } = useParams<{
+    code: string
+    citizenshipCode?: string
+  }>()
+  const [searchParams] = useSearchParams()
   const destination = code ? getDestination(code) : undefined
+  const citizenshipCode =
+    citizenshipCodeFromPath?.toUpperCase() ??
+    searchParams.get('citizenship')?.toUpperCase()
+  const citizenship = citizenshipCode
+    ? countries.find((country) => country.code === citizenshipCode)
+    : null
+  const policy = resolveVisaPolicy(destination?.code ?? '', citizenshipCode)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -43,9 +56,7 @@ export default function DestinationPage() {
   return (
     <>
       {/* Page hero */}
-      <section
-        className={`relative overflow-hidden bg-gradient-to-br ${destination.gradient}`}
-      >
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-teal-600 to-cyan-500">
         <div
           aria-hidden="true"
           className="absolute inset-0 opacity-25"
@@ -68,6 +79,18 @@ export default function DestinationPage() {
               <Flag code={destination.code} className="rounded-lg text-7xl" />
             </span>
             <div>
+              {citizenship && (
+                <p className="mb-3 inline-flex rounded-full border border-white/40 bg-white/20 px-4 py-1.5 text-sm font-semibold text-white shadow-sm">
+                  eVisa policy: {citizenship.name} citizens to{' '}
+                  {destination.name}
+                </p>
+              )}
+              {!citizenship && (
+                <p className="mb-3 inline-flex rounded-full border border-white/40 bg-white/20 px-4 py-1.5 text-sm font-semibold text-white shadow-sm">
+                  eVisa policy: select nationality on home page for
+                  country-specific requirements
+                </p>
+              )}
               <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
                 {destination.name}
               </h1>
@@ -92,10 +115,12 @@ export default function DestinationPage() {
 
             <h3 className="mt-10 flex items-center gap-2 text-lg font-bold text-ink">
               <FileText className="size-5 text-primary" />
-              What you will need
+              {citizenship
+                ? `Requirements for ${citizenship.name} citizens`
+                : 'Requirements'}
             </h3>
             <ul className="mt-4 space-y-3">
-              {destination.documents.map((doc) => (
+              {policy.documents.map((doc) => (
                 <li key={doc} className="flex items-start gap-2.5">
                   <CheckCircle2 className="mt-0.5 size-5 shrink-0 text-emerald-500" />
                   <span className="text-sm text-ink">{doc}</span>

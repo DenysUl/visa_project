@@ -1,4 +1,5 @@
 ﻿import { useState, type CSSProperties } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   ArrowRight,
   BadgeCheck,
@@ -16,6 +17,7 @@ const defaultCitizenship =
   countries.find((c) => c.code === 'UA') ?? countries[0]
 
 export default function Hero() {
+  const navigate = useNavigate()
   const [citizenship, setCitizenship] = useState<Country | null>(
     defaultCitizenship,
   )
@@ -23,12 +25,13 @@ export default function Hero() {
 
   const handleCheck = () => {
     if (!citizenship || !destination) return
-    // Placeholder: this will navigate to the requirements page
-    alert(`Checking requirements: ${citizenship.name} → ${destination.name}`)
+    navigate(
+      `/destinations/${destination.code.toLowerCase()}/${citizenship.code.toLowerCase()}`,
+    )
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-primary-light via-primary-light/60 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-primary-light via-teal-50/40 to-white">
       {/* Decorative blobs */}
       <div
         aria-hidden="true"
@@ -51,15 +54,13 @@ export default function Hero() {
 
             {/* H1 */}
             <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight text-ink sm:text-5xl xl:text-6xl">
-              Get your visa to{' '}
-              <span className="text-primary">190+ countries</span> in one
-              click
+              Get your eVisa online{' '}
+              in one click
             </h1>
 
             {/* Subtitle */}
             <p className="mx-auto mt-4 max-w-2xl text-base text-muted sm:text-lg lg:mx-0">
-              Fast, secure and 100% online. No embassy queues, no paperwork —
-              we handle everything for you.
+            Expert review, secure and 100% online - apply for your eVisa in minutes and get professional support every step of the way.
             </p>
 
             {/* Search widget */}
@@ -105,7 +106,7 @@ export default function Hero() {
             className="relative mx-auto h-72 w-full max-w-sm sm:h-80 lg:h-[28rem] lg:max-w-none"
           >
             {/* Backdrop panel */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary via-blue-600 to-sky-400 shadow-2xl shadow-primary/30" />
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary via-teal-600 to-cyan-500 shadow-2xl shadow-primary/30" />
             {/* World dots texture */}
             <div
               className="absolute inset-0 rounded-3xl opacity-30"
@@ -146,21 +147,21 @@ export default function Hero() {
 
             {/* Passport card */}
             <div
-              className="animate-float absolute left-5 top-8 w-40 rounded-2xl bg-slate-900 p-4 shadow-xl sm:left-8 sm:top-10 lg:w-48"
+              className="animate-float absolute left-5 top-8 w-40 rounded-2xl bg-teal-950 p-4 shadow-xl sm:left-8 sm:top-10 lg:w-48"
               style={{ '--float-rotate': '-6deg' } as CSSProperties}
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-amber-300">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-teal-200">
                   Passport
                 </span>
-                <Globe className="size-4 text-amber-300" />
+                <Globe className="size-4 text-teal-200" />
               </div>
-              <div className="mt-4 grid size-12 place-items-center rounded-full bg-amber-300/20">
-                <Globe className="size-7 text-amber-300" />
+              <div className="mt-4 grid size-12 place-items-center rounded-full bg-teal-200/20">
+                <Globe className="size-7 text-teal-200" />
               </div>
               <div className="mt-4 space-y-1.5">
-                <div className="h-1.5 w-3/4 rounded bg-slate-700" />
-                <div className="h-1.5 w-1/2 rounded bg-slate-700" />
+                <div className="h-1.5 w-3/4 rounded bg-teal-900" />
+                <div className="h-1.5 w-1/2 rounded bg-teal-900" />
               </div>
             </div>
 
@@ -174,7 +175,7 @@ export default function Hero() {
                   <CheckCircle2 className="size-5 text-emerald-600" />
                 </span>
                 <div>
-                  <p className="text-sm font-bold text-ink">Visa approved!</p>
+                  <p className="text-sm font-bold text-ink">eVisa approved!</p>
                   <p className="text-xs text-muted">
                     Document sent to your email
                   </p>

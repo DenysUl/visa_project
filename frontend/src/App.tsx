@@ -16,6 +16,10 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/destinations/:code" element={<DestinationPage />} />
+            <Route
+              path="/destinations/:code/:citizenshipCode"
+              element={<DestinationPage />}
+            />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/account" element={<AccountPage />} />
           </Routes>
