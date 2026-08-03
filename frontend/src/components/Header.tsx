@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom'
 import { ChevronDown, CircleUser, Menu, X } from 'lucide-react'
 import { useAuth } from '../auth/AuthContext'
 
-const navItems = [
+interface NavItem {
+  label: string
+  href: string
+  hasDropdown?: boolean
+}
+
+const navItems: NavItem[] = [
   { label: 'Requirements by Country', href: '/#destinations' },
   { label: 'Blog', href: '/#blog' },
   { label: 'Contacts', href: '/#contacts' },

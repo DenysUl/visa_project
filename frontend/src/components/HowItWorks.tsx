@@ -4,7 +4,7 @@ const steps = [
   {
     icon: FileText,
     title: 'Fill out an online form',
-    text: 'Complete a short online form and upload the required documents securely. Save a draft and come back anytime',
+    text: 'Complete a short online form and upload the required documents securely. Save a draft and come back anytime.',
   },
   {
     icon: CreditCard,
