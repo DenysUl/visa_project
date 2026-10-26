@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -34,6 +34,8 @@ model Application {
   email           String
   citizenship     String
   status          String      @default("pending")
+  /** JSON blob with questionnaire answers (trip, documents, extras) */
+  details         String      @default("{}")
   createdAt       DateTime    @default(now())
   destination     Destination @relation(fields: [destinationCode], references: [code])
   destinationCode String

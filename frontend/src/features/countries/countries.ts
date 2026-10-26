@@ -1,0 +1,68 @@
+import { siteConfig } from '@/config/site'
+
+export interface Country {
+  /** ISO 3166-1 alpha-2 code (uppercase) */
+  code: string
+  name: string
+}
+
+export const countries: readonly Country[] = [
+  { code: 'UA', name: 'Ukraine' },
+  { code: 'US', name: 'United States' },
+  { code: 'GB', name: 'United Kingdom' },
+  { code: 'DE', name: 'Germany' },
+  { code: 'FR', name: 'France' },
+  { code: 'ES', name: 'Spain' },
+  { code: 'IT', name: 'Italy' },
+  { code: 'PL', name: 'Poland' },
+  { code: 'PT', name: 'Portugal' },
+  { code: 'NL', name: 'Netherlands' },
+  { code: 'GR', name: 'Greece' },
+  { code: 'CZ', name: 'Czechia' },
+  { code: 'AE', name: 'United Arab Emirates' },
+  { code: 'TR', name: 'Turkey' },
+  { code: 'EG', name: 'Egypt' },
+  { code: 'IN', name: 'India' },
+  { code: 'CN', name: 'China' },
+  { code: 'JP', name: 'Japan' },
+  { code: 'KR', name: 'South Korea' },
+  { code: 'TH', name: 'Thailand' },
+  { code: 'VN', name: 'Vietnam' },
+  { code: 'ID', name: 'Indonesia (Bali)' },
+  { code: 'SG', name: 'Singapore' },
+  { code: 'MY', name: 'Malaysia' },
+  { code: 'CA', name: 'Canada' },
+  { code: 'MX', name: 'Mexico' },
+  { code: 'BR', name: 'Brazil' },
+  { code: 'AR', name: 'Argentina' },
+  { code: 'AU', name: 'Australia' },
+  { code: 'NZ', name: 'New Zealand' },
+  { code: 'IL', name: 'Israel' },
+  { code: 'SA', name: 'Saudi Arabia' },
+  { code: 'QA', name: 'Qatar' },
+  { code: 'GE', name: 'Georgia' },
+  { code: 'MD', name: 'Moldova' },
+  { code: 'RO', name: 'Romania' },
+  { code: 'BG', name: 'Bulgaria' },
+  { code: 'HU', name: 'Hungary' },
+  { code: 'AT', name: 'Austria' },
+  { code: 'CH', name: 'Switzerland' },
+  { code: 'SE', name: 'Sweden' },
+  { code: 'NO', name: 'Norway' },
+  { code: 'ZA', name: 'South Africa' },
+  { code: 'MA', name: 'Morocco' },
+  { code: 'KE', name: 'Kenya' },
+  { code: 'LK', name: 'Sri Lanka' },
+  { code: 'MV', name: 'Maldives' },
+  { code: 'PH', name: 'Philippines' },
+  { code: 'DO', name: 'Dominican Republic' },
+  { code: 'CU', name: 'Cuba' },
+]
+
+export function findCountryByCode(code: string): Country | undefined {
+  const normalizedCode = code.toUpperCase()
+  return countries.find((country) => country.code === normalizedCode)
+}
+
+export const defaultCitizenship: Country =
+  findCountryByCode(siteConfig.defaultCitizenshipCode) ?? countries[0]

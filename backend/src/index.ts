@@ -1,25 +1,25 @@
-import express from 'express'
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import { destinationsRouter } from './routes/destinations.js'
-import { applicationsRouter } from './routes/applications.js'
-import { authRouter } from './routes/auth.js'
+import { env } from './config/env.js'
+import { createApp } from './app.js'
+import { prisma } from './lib/prisma.js'
 
-const app = express()
-const PORT = Number(process.env.PORT ?? 3001)
+const app = createApp({ prisma })
 
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }))
-app.use(express.json())
-app.use(cookieParser())
-
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' })
+const server = app.listen(env.port, () => {
+  console.log(`API server running at http://localhost:${env.port}`)
 })
 
-app.use('/api/auth', authRouter)
-app.use('/api/destinations', destinationsRouter)
-app.use('/api/applications', applicationsRouter)
+function shutdown(signal: NodeJS.Signals): void {
+  console.log(`${signal} received, shutting down`)
+  server.close((closeError) => {
+    if (closeError) console.error('Failed to close HTTP server', closeError)
+    prisma
+      .$disconnect()
+      .catch((disconnectError: unknown) =>
+        console.error('Failed to disconnect from database', disconnectError),
+      )
+      .finally(() => process.exit(closeError ? 1 : 0))
+  })
+}
 
-app.listen(PORT, () => {
-  console.log(`API server running at http://localhost:${PORT}`)
-})
+process.once('SIGINT', shutdown)
+process.once('SIGTERM', shutdown)

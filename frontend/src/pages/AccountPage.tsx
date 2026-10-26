@@ -7,54 +7,51 @@ import {
   Loader2,
   LogOut,
 } from 'lucide-react'
-import Flag from '../components/Flag'
-import { useAuth } from '../auth/AuthContext'
+import ErrorMessage from '@/components/ui/ErrorMessage'
+import Flag from '@/components/ui/Flag'
+import { routePaths } from '@/config/routes'
+import ApplicationStatusBadge from '@/features/applications/ApplicationStatusBadge'
+import { applicationsApi } from '@/features/applications/api'
+import type { ApplicationWithDestination } from '@/features/applications/types'
+import { useAuth } from '@/features/auth/useAuth'
 
-interface ApplicationRow {
-  id: number
-  fullName: string
-  email: string
-  citizenship: string
-  status: string
-  createdAt: string
-  destination: { name: string; code: string }
-}
+const LOAD_ERROR_MESSAGE =
+  'Could not load your applications. Please try again later.'
 
-const statusStyles: Record<string, string> = {
-  pending: 'bg-amber-100 text-amber-700',
-  approved: 'bg-emerald-100 text-emerald-700',
-  rejected: 'bg-red-100 text-red-700',
+const submittedDateFormat: Intl.DateTimeFormatOptions = {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
 }
 
 export default function AccountPage() {
   const { user, loading, logout } = useAuth()
   const navigate = useNavigate()
-  const [applications, setApplications] = useState<ApplicationRow[] | null>(
-    null,
-  )
+  const [applications, setApplications] = useState<
+    ApplicationWithDestination[] | null
+  >(null)
   const [error, setError] = useState('')
 
   useEffect(() => {
     if (!loading && !user) {
-      navigate('/login', { replace: true, state: { from: '/account' } })
+      navigate(routePaths.login, {
+        replace: true,
+        state: { from: routePaths.account },
+      })
     }
   }, [loading, user, navigate])
 
   useEffect(() => {
     if (!user) return
-    fetch('/api/applications/mine', { credentials: 'include' })
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`Request failed (${res.status})`)
-        setApplications((await res.json()) as ApplicationRow[])
-      })
-      .catch(() =>
-        setError('Could not load your applications. Please try again later.'),
-      )
+    applicationsApi
+      .listMine()
+      .then(setApplications)
+      .catch(() => setError(LOAD_ERROR_MESSAGE))
   }, [user])
 
   const handleLogout = async () => {
     await logout()
-    navigate('/')
+    navigate(routePaths.home)
   }
 
   if (loading || !user) {
@@ -97,11 +94,7 @@ export default function AccountPage() {
           My applications
         </h2>
 
-        {error && (
-          <p className="mt-4 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600">
-            {error}
-          </p>
-        )}
+        {error && <ErrorMessage className="mt-4">{error}</ErrorMessage>}
 
         {!error && applications === null && (
           <div className="mt-6 grid place-items-center rounded-2xl bg-white py-12 ring-1 ring-slate-900/5">
@@ -139,21 +132,14 @@ export default function AccountPage() {
                     </p>
                     <p className="text-xs text-muted">
                       Submitted{' '}
-                      {new Date(a.createdAt).toLocaleDateString('en-GB', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric',
-                      })}
+                      {new Date(a.createdAt).toLocaleDateString(
+                        'en-GB',
+                        submittedDateFormat,
+                      )}
                     </p>
                   </div>
                 </div>
-                <span
-                  className={`inline-flex w-fit rounded-full px-3 py-1 text-xs font-bold capitalize ${
-                    statusStyles[a.status] ?? 'bg-slate-100 text-slate-600'
-                  }`}
-                >
-                  {a.status}
-                </span>
+                <ApplicationStatusBadge status={a.status} />
               </li>
             ))}
           </ul>
