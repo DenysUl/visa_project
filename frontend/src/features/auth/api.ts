@@ -1,8 +1,9 @@
+import { env } from '@/config/env'
 import { ApiError, apiRequest } from '@/lib/http'
+import { localAuthApi } from './local-api'
 import type { LoginCredentials, RegistrationData, User } from './types'
 
-export const authApi = {
-  /** Current session user, or `null` when signed out */
+const remoteAuthApi = {
   async getCurrentUser(): Promise<User | null> {
     try {
       return await apiRequest<User>('/auth/me')
@@ -27,3 +28,5 @@ export const authApi = {
     await apiRequest<{ ok: boolean }>('/auth/logout', { method: 'POST' })
   },
 }
+
+export const authApi = env.useLocalData ? localAuthApi : remoteAuthApi

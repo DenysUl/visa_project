@@ -1,11 +1,13 @@
+import { env } from '@/config/env'
 import { apiRequest } from '@/lib/http'
+import { localApplicationsApi } from './local-api'
 import type {
   Application,
   ApplicationWithDestination,
   NewApplication,
 } from './types'
 
-export const applicationsApi = {
+const remoteApplicationsApi = {
   submit(application: NewApplication): Promise<Application> {
     return apiRequest<Application>('/applications', {
       method: 'POST',
@@ -18,3 +20,7 @@ export const applicationsApi = {
     return apiRequest<ApplicationWithDestination[]>('/applications/mine')
   },
 }
+
+export const applicationsApi = env.useLocalData
+  ? localApplicationsApi
+  : remoteApplicationsApi
